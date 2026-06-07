@@ -20,7 +20,10 @@ def dropout(x, p=0.5, rng=None):
     x = np.asarray(x, dtype=float)
 
     # Choose random number generator
-    random = rng.random if rng is not None else np.random.random
+    if rng is not None:
+        random = rng.random 
+    else:
+        np.random.random
 
     # Keep neurons with probability (1 - p)
     keep_mask = random(x.shape) > p
